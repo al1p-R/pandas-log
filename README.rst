@@ -36,25 +36,25 @@ Lets look at an example, first we need to load ``pandas-log`` after ``pandas`` a
     import pandas_log
 
     with pandas_logs.enable():
-        df = pd.DataFrame({"name": ['Alfred', 'Batman', 'Catwoman'],
-                       "toy": [np.nan, 'Batmobile', 'Bullwhip'],
-                       "born": [pd.NaT, pd.Timestamp("1940-04-25"), pd.NaT]})
+         df = pd.DataFrame({"name": ['Alfred', 'Batman', 'Catwoman','Fred'],
+                   "toy": [np.nan, 'Batmobile', 'Bullwhip','Car'],
+                   "born": [pd.NaT, pd.Timestamp("1940-04-25"), pd.NaT,pd.Timestamp("1945-01-01")]})
 
 
 ``pandas-log`` will give you feedback, for instance when filtering a data frame or adding a new variable:
 
 .. code-block:: python
 
-    df.assign(toy=lambda x: x.toy.map(str.lower))
+    df.assign(toy=lambda x: x.toy.map(str))
       .query("name != 'Batman'")
 
 ``pandas-log`` can be especially helpful in longer pipes:
 
 .. code-block:: python
 
-    df.assign(toy=lambda x: x.toy.map(str.lower))
+    df.assign(toy=lambda x: x.toy.map(str))
       .query("name != 'Batman'")
-      .dropna()\
+      .dropna()
       .assign(lower_name=lambda x: x.name.map(str.lower))
       .reset_index()
 
