@@ -32,10 +32,11 @@ Lets look at an example, first we need to load ``pandas-log`` after ``pandas`` a
 
 .. code-block:: python
 
-    import pandas
+    import pandas as pd
+    import numpy as np
     import pandas_log
 
-    with pandas_logs.enable():
+    with pandas_log.enable():
         df = pd.DataFrame({"name": ['Alfred', 'Batman', 'Catwoman'],
                        "toy": [np.nan, 'Batmobile', 'Bullwhip'],
                        "born": [pd.NaT, pd.Timestamp("1940-04-25"), pd.NaT]})
